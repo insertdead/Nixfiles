@@ -6,41 +6,74 @@ let
     aspell         # how too rite???
     arandr         # graphical xrandr interface
     brightnessctl  # manage brightness of screen, and nothing else
+    blueman        # bluetooth management
+    capitaine-cursors
+    cht-sh         # oh my god this is so useful how have i not heard about this before
+    cmatrix        # funny matrix
     clang_12       # alternative C/C++ compiler
-    discord-ptb    # proprietary messaging client
+    (discord-ptb.overrideAttrs (oldAttrs: rec {
+      src = fetchTarball {
+        url = "https://dl-ptb.discordapp.net/apps/linux/0.0.27/discord-ptb-0.0.27.tar.gz";
+        sha256 = "0vwzp98hp3g1883z5kifhx85zvymk8b7jcffk98w64vvi2ibymg1";
+      };
+    }))    # proprietary messaging client
     discord-rpc    # enable IPC for discord
+    element-desktop# matrix client
     fd             # find but awesome
-    feh            # image viewer that can also set backgrounds
+    ffmpeg         # videos
+    font-awesome   # font but awesome
+    ghc            # haskell code compiler
+    graphviz       # graphs for org-roam
+    gimp           # photoshop
     html-tidy      # html validator
     htop           # GUYS IM ONLY USING 90MB RAM B)
-    imv            # simple image viewer for WMs
+    irony-server   # ironic
     libclang       # clang libraries
+    libreoffice    # word but epic
+    libqalculate   # calculator cli
+    lua            # simple scripting language
+    lxappearance   # change appearance
+    maim           # screenshotting utility
+    mypaint        # paint idk
     ncdu           # TUI for du
     neofetch       # ooh look at my cool distro
-    nix-doc        # Interactive Nix documentation tool
+    niv            # easy dependency management for nix
+    nix-doc        # interactive Nix documentation tool
     nixfmt         # format nix code
-    p7zip          # Open source 7zip implementation
-    pass           # password manager for nerds
+    nordic         # nord inspired gtk theme
+    obs-studio     # funny recording software
+    p7zip          # open source 7zip implementation
+    pcmanfm-qt     # file manager
     pandoc         # document converter
     picom
-    pinentry_gnome # Gnome/GTK version of pinentry
+    pinentry_gnome # gnome/GTK version of pinentry
     pipenv         # development environment for python
     poetry         # python dependency and packaging management
     pulsemixer     # PulseAudio TUI
     python39       # user-wide python version
-    python-language-server
-    unzip          # Unzipping utility
+    unzip          # unzipping utility
+    qalculate-gtk  # calculator
+    texlive.combined.scheme-full
+    tor-browser-bundle-bin
     ripgrep        # usability of silver searcher and speed of grep
-    rofi           # versatile dmenu alternative
-    rofi-calc      # calculator plugin for rofi
-    rofi-emoji     # Emoji selector
+    # rofi           # versatile dmenu alternative
+    # rofi-calc      # calculator plugin for rofi
+    # rofi-emoji     # emoji selector
     ruby_3_0       # JIT language similar to python and perl
     rtags          # c/c++ code indexing based on clang
     shellcheck     # shell script analysis
     spotify        # music
+    sqlite         # idk
+    stix-two       # cool fonts
+    sxiv           # simple image viewer for WMs
+    syncthing      # syncing client between devices
+    system-config-printer
     xclip          # emacs-everywhere dependency
+    xdg-launch     # launch .desktop programs
     xorg.xwininfo  # emacs-everywhere dependency
+    youtube-dl     # dl yt vids
     zinit          # zsh plugin manager
+    zip            # zip
   ];
 
   dictPackages = with pkgs.aspellDicts; [ en fr ];
@@ -50,25 +83,46 @@ let
     hub            # github cli
   ];
 
+  haskellPackages = with pkgs.haskellPackages; [
+    xmobar
+  ];
+
   nodePackages = with pkgs.nodePackages; [
     stylelint
     js-beautify
   ];
 
+  obsPlugins = with pkgs.obs-studio-plugins; [
+    obs-gstreamer  # obs plugin to add gstreamer support
+  ];
+
   pythonPackages = with pkgs.python39Packages; [
     black          # python formatting tool
+    ipython        # python shell prompt
     isort          # sort python imports
     nose           # python testing utility
     pip            # python package manager
     pyflakes       # error checker
     pytest         # python testing utility
+    (python-lsp-server.override {
+      withPycodestyle = true;
+      withPydocstyle = true;
+      withRope = true;
+      # withMypy = true;
+    })
+    # python-lsp-black
+    # pylsp-mypy
+  ];
+
+  luaPackages = with pkgs.luaPackages; [
+    luacheck
   ];
 
   rustPackages = with pkgs; [
     rustc
     cargo
+    clippy
     rustfmt
-    rustracer
   ];
 
   myPolybar = pkgs.polybar.override {
@@ -78,133 +132,20 @@ let
     pulseSupport = true;
   };
 
-  bspwmRules = {
-    discord = { desktop = "^6"; };
-    Emacs = { state = "tiled"; };
-    Firefox = { desktop = "^2"; };
-    Gimp = {
-      desktop = "^8";
-      state = "floating";
-      follow = true;
-    };
-    mpv = {
-      state = "floating";
-      sticky = true;
-    };
-    slop = { manage = false; };
-  };
-
-  bspwmSettings = {
-    normal_border_color = "#3e4451";
-    active_border_color = "#c8ccd4";
-    border_width = 2;
-    window_gap = 24;
-
-    split_ratio = 0.52;
-    borderless_monocle = true;
-    gapless_monocle = true;
-
-    focus_follows_pointer = true;
-    pointer_follows_monitor = true;
-  };
-
-  starshipConfig = {
-    aws = { symbol = "  "; };
-    conda = { symbol = " "; };
-    dart = {  symbol = " "; };
-    directory = { read_only = " "; };
-    docker_context = { symbol = " "; };
-    elixir = { symbol = " "; };
-    elm = { symbol = " "; };
-    git_branch = { symbol = " "; };
-    golang = { symbol = " "; };
-    hg_branch = { symbol = " "; };
-    java = { symbol = " "; };
-    julia = { symbol = " "; };
-    memory_usage = { symbol = " "; };
-    nim = { symbol = " "; };
-    nix_shell = { symbol = " "; };
-    package = { symbol = " "; };
-    perl = { symbol = " "; };
-    php = { symbol = " "; };
-    python = { symbol = " "; };
-    ruby = { symbol = " "; };
-    scala = { symbol = " "; };
-    shlvl = { symbol = " "; };
-    swift = { symbol = "ﯣ "; };
-  };
-
-  shellAliases = {
-    weather = "curl -s https://wttr.in; echo";
-    myip = "curl -s https://ipecho.net/plain; echo";
-    crypto = "curl -s https://cad.rate.sx; echo";
-    # ls = "exa -l -a --color=always --git --group-directories-first";
-    # ll = "exa -l --colour=always --git -u | egrep ';.'";
-    grep = "rg --color=auto";
-    fgrep = "fgrep --color=auto";
-    egrep = "egrep --color=auto";
-    cp = "cp -i";
-    pipi = "pip install --user";
-    yt = "youtube-dl";
-    dots = "dotbare";
-    scim = "sc-im";
-    vim = "nvim";
-    charge = "upower -i /org/freedesktop/UPower/devices/battery_CMB0";
-    brightness = "brightnessctl";
-    tlmgr = "tllocalmgr";
-    g = "git";
-    em = "emacs -nw";
-    ".." = "cd ..";
-    "..." = "cd ../..";
-    ".4" = "cd ../../..";
-    ".5" = "cd ../../../..";
-    reboot = "doas reboot";
-    poweroff = "doas poweroff";
-    shutdown = "doas shutdown";
-  };
-
-  shellVariables = {
-    # ~/ Clean-up:
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XINITRC = "${config.xdg.configHome}/x11/xinitrc";
-    NOTMUCH_CONFIG = "${config.xdg.configHome}/notmuch-config";
-    GTK2_RC_FILES = "${config.xdg.configHome}/gtk-2.0/gtkrc-2.0";
-    LESSHISTFILE = "-";
-    WGETRC = "${config.xdg.configHome}/wget/wgetrc";
-    INPUTRC = "${config.xdg.configHome}/shell/inputrc";
-    ZDOTDIR = "${config.xdg.configHome}/zsh";
-    ALSA_CONFIG_PATH = "$XDG_CONFIG_HOME/alsa/asoundrc";
-    WINEPREFIX = "${config.xdg.dataHome}/wineprefixes/default";
-    KODI_DATA = "${config.xdg.dataHome}/kodi";
-    PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
-    TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
-    ANDROID_SDK_HOME = "${config.xdg.configHome}/android";
-    CARGO_HOME = "${config.xdg.dataHome}/cargo";
-    GOPATH = "${config.xdg.dataHome}/go";
-    ANSIBLE_CONFIG = "${config.xdg.configHome}/ansible/ansible.cfg";
-    UNISON = "${config.xdg.dataHome}/unison";
-    WEECHAT_HOME = "${config.xdg.configHome}/weechat";
-    MBSYNCRC = "${config.xdg.configHome}/mbsync/config";
-    ELECTRUMDIR = "${config.xdg.dataHome}/electrum";
-    POETRY_HOME = "${config.xdg.dataHome}/poetry";
-
-    # Other program settings:
-    MOZ_DISABLE_RDD_SANDBOX=1;
-    MAILDIR = "$HOME/Mail";
-    DICS = "/usr/share/stardict/dic/";
-    SUDO_ASKPASS = "$HOME/.local/bin/dmenupass";
-    FZF_DEFAULT_OPTS = "--layout=reverse --height 40%";
-    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-    LESS = "-R";
-    MOZ_USE_XINPUT2 = 1;		# Mozilla smooth scrolling/touchpads.
-    AWT_TOOLKIT = "MToolkit wmname LG3D";	#May have to install wmname
-    _JAVA_AWT_WM_NONREPARENTING = 1;	# Fix for Java applications in dwm
-  };
-
 in
 {
+  imports = [
+    ./modules/shell
+    ./modules/nvim
+    ./modules/xmonad
+    ./modules/bspwm.nix
+    ./modules/starship.nix
+    # ./modules/emacs.nix
+    # ./modules/dunst.nix
+    ./modules/mpv.nix
+    ./modules/vscode.nix
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -215,20 +156,8 @@ in
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    extraPackages = epkgs: [ epkgs.vterm epkgs.org-roam ];
   };
-
-  programs.exa = {
-    enable = true;
-    enableAliases = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.git = {
     enable = true;
     delta.enable = true;
@@ -236,28 +165,20 @@ in
     # Identification and GPG
     userEmail = "mdsc0111@tuta.io";
     userName = "insertdead";
-    # signing.signByDefault = true;
-    signing.key = "5C21B7BE3384235B";
+    signing.signByDefault = true;
+    signing.key = "0277F95B87855378";
 
     aliases = {
       c  = "clone";
       p  = "push";
       co = "checkout";
       m  = "commit";
+      s  = "status";
     };
     extraConfig = {};
   };
 
-  # WIP
-  # services.dunst = {
-  #   enable = true;
-  #   iconTheme = {
-  #     name = "Papirus-Dark";
-  #     package = pkgs.papirus-icon-theme;
-  #   };
-  #   settings = "";
-  # };
-
+  services.mpris-proxy.enable = true;
   
   services.gpg-agent = {
     enable = true;
@@ -268,7 +189,7 @@ in
   };
 
   services.polybar = {
-    enable = true;
+    enable = false;
     package = myPolybar;
     config = ~/.config/polybar/polybar.ini;
     script = ''polybar main &'';
@@ -283,19 +204,8 @@ in
 
   programs.jq.enable = true;
 
-  programs.mpv = {
-    enable = true;
-    bindings = {};
-    config = {};
-    profiles = {};
-    defaultProfiles = [];
-    scripts = [];
-  };
-
-  programs.mu.enable = true;
-
   programs.ncmpcpp = {
-    enable = true;
+    enable = false;
     bindings = [
       { key = "j"; command = "scroll_down"; }
       { key = "k"; command = "scroll_up";  }
@@ -306,41 +216,25 @@ in
     settings = {};
   };
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
-
   programs.nix-index = {
     enable = true;
     enableZshIntegration = true;
   };
 
+  # password manager for nerds
   programs.password-store = {
     enable = true;
+    package = pkgs.pass.withExtensions (exts: [ exts.pass-otp]);
     settings = {
       PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
-      PASSWORD_STORE_KEY = "69866158CEEBD867360910F3CA542935075CFD4B";
+      PASSWORD_STORE_KEY = "8B83DD4703D12B59A9CF29222C1BDB03FB358F1D";
       PASSWORD_STORE_CLIP_TIME = "30";
-    };
-  };
-
-  programs.qutebrowser = {
-    enable = true;
-    keyBindings = {};
-    searchEngines = {
-      DEFAULT = "https://duckduckgo.com/?q={}";
-      aw = "https://wiki.archlinux.org/?search={}";
-      nw = "https://nixos.wiki/index.php?search={}";
-      sx = "https://start.paulgo.io/search?q={}";
-      w  = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
     };
   };
 
   programs.rofi = {
     enable = true;
+    package = with pkgs; (rofi.override {plugins=[rofi-emoji rofi-calc];});
     theme = "${config.xdg.configHome}/rofi/nord.rasi";
     extraConfig = { modi = "window,drun,run,ssh"; };
     pass.enable = true;
@@ -349,41 +243,9 @@ in
 
   programs.ssh.enable = true;
 
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = starshipConfig;
-  };
-
-  programs.texlive.enable = true;
-
   programs.zathura = {
     enable = true;
     options = { default-bg = "#282c34"; default-fg = "#abb2bf"; };
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    enableVteIntegration = true;
-    autocd = true;
-    defaultKeymap = "vicmd";
-    dotDir = ".config/zsh";
-    dirHashes = {
-      docs = "$HOME/Documents";
-      vids = "$HOME/Videos";
-      dl   = "$HOME/Downloads";
-      git  = "$HOME/git";
-    };
-    history = {
-      expireDuplicatesFirst = true;
-      ignorePatterns = [ "rm *" "pkill *" "killall *" ];
-      path = "${config.xdg.dataHome}/history";
-    };
-    localVariables = shellVariables;
-    shellAliases = shellAliases;
-    initExtra = "xrdb -load ${config.xdg.configHome}/x11/xresources";
   };
 
   qt = {
@@ -391,28 +253,18 @@ in
     platformTheme = "gtk";
   };
 
-  xsession.windowManager.bspwm = {
-    enable = true;
-    monitors = { eDP-1 = [ "dev" "www" "www" "sys" "doc" "games" "chat" "mus" "vid" "gfx"  ]; };
-    rules = bspwmRules;
-    settings = bspwmSettings;
-    startupPrograms = [ "dunst" "xset r rate 300 50" ];
-  };
+  xsession.enable = true;
+  xsession.initExtra = "${config.xdg.configHome}/x11/xprofile";
 
-  xresources.extraConfig = builtins.readFile ( ~/.config/x11/xresources );
-
-  xsession.pointerCursor = {
-    package = pkgs.breeze-icons;
-    name = "breeze_cursors";
-    size = 16;
-  };
+  # xresources.extraConfig = builtins.readFile ( ~/.config/x11/xresources );
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
+    (import (builtins.fetchTarball https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz))
   ];
 
   # Packages
-  home.packages = defaultPackages ++ dictPackages ++ gitPackages ++ nodePackages ++ pythonPackages ++ rustPackages;
+  home.packages = defaultPackages ++ dictPackages ++ gitPackages ++ haskellPackages ++ nodePackages ++ obsPlugins ++ pythonPackages ++ luaPackages ++ rustPackages;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
