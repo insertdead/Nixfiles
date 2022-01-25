@@ -3,77 +3,10 @@
 let
 
   defaultPackages = with pkgs; [
-    aspell         # how too rite???
-    arandr         # graphical xrandr interface
-    brightnessctl  # manage brightness of screen, and nothing else
-    blueman        # bluetooth management
-    capitaine-cursors
-    cht-sh         # oh my god this is so useful how have i not heard about this before
     cmatrix        # funny matrix
-    clang_12       # alternative C/C++ compiler
-    (discord-ptb.overrideAttrs (oldAttrs: rec {
-      src = fetchTarball {
-        url = "https://dl-ptb.discordapp.net/apps/linux/0.0.27/discord-ptb-0.0.27.tar.gz";
-        sha256 = "0vwzp98hp3g1883z5kifhx85zvymk8b7jcffk98w64vvi2ibymg1";
-      };
-    }))    # proprietary messaging client
-    discord-rpc    # enable IPC for discord
-    element-desktop# matrix client
-    fd             # find but awesome
-    ffmpeg         # videos
-    font-awesome   # font but awesome
-    ghc            # haskell code compiler
-    graphviz       # graphs for org-roam
-    gimp           # photoshop
-    html-tidy      # html validator
-    htop           # GUYS IM ONLY USING 90MB RAM B)
-    irony-server   # ironic
-    libclang       # clang libraries
-    libreoffice    # word but epic
-    libqalculate   # calculator cli
-    lua            # simple scripting language
-    lxappearance   # change appearance
-    maim           # screenshotting utility
-    mypaint        # paint idk
-    ncdu           # TUI for du
-    neofetch       # ooh look at my cool distro
     niv            # easy dependency management for nix
     nix-doc        # interactive Nix documentation tool
-    nixfmt         # format nix code
-    nordic         # nord inspired gtk theme
-    obs-studio     # funny recording software
-    p7zip          # open source 7zip implementation
-    pcmanfm-qt     # file manager
-    pandoc         # document converter
-    picom
-    pinentry_gnome # gnome/GTK version of pinentry
-    pipenv         # development environment for python
-    poetry         # python dependency and packaging management
-    pulsemixer     # PulseAudio TUI
-    python39       # user-wide python version
-    unzip          # unzipping utility
-    qalculate-gtk  # calculator
-    texlive.combined.scheme-full
-    tor-browser-bundle-bin
-    ripgrep        # usability of silver searcher and speed of grep
-    # rofi           # versatile dmenu alternative
-    # rofi-calc      # calculator plugin for rofi
-    # rofi-emoji     # emoji selector
-    ruby_3_0       # JIT language similar to python and perl
-    rtags          # c/c++ code indexing based on clang
-    shellcheck     # shell script analysis
-    spotify        # music
-    sqlite         # idk
-    stix-two       # cool fonts
-    sxiv           # simple image viewer for WMs
-    syncthing      # syncing client between devices
-    system-config-printer
-    xclip          # emacs-everywhere dependency
-    xdg-launch     # launch .desktop programs
-    xorg.xwininfo  # emacs-everywhere dependency
-    youtube-dl     # dl yt vids
     zinit          # zsh plugin manager
-    zip            # zip
   ];
 
   dictPackages = with pkgs.aspellDicts; [ en fr ];
@@ -118,13 +51,6 @@ let
     luacheck
   ];
 
-  rustPackages = with pkgs; [
-    rustc
-    cargo
-    clippy
-    rustfmt
-  ];
-
   myPolybar = pkgs.polybar.override {
     alsaSupport = true;
     githubSupport = true;
@@ -143,7 +69,8 @@ in
     # ./modules/emacs.nix
     # ./modules/dunst.nix
     ./modules/mpv.nix
-    ./modules/vscode.nix
+    # ./modules/vscode.nix
+    ./modules/direnv.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -154,10 +81,10 @@ in
   home.username = "insertdead";
   home.homeDirectory = "/home/insertdead";
 
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs: [ epkgs.vterm epkgs.org-roam ];
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   extraPackages = epkgs: [ epkgs.vterm epkgs.org-roam ];
+  # };
   programs.git = {
     enable = true;
     delta.enable = true;
@@ -169,6 +96,7 @@ in
     signing.key = "0277F95B87855378";
 
     aliases = {
+      a = "add";
       c  = "clone";
       p  = "push";
       co = "checkout";
@@ -180,13 +108,13 @@ in
 
   services.mpris-proxy.enable = true;
   
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "gnome3";
-    maxCacheTtl = 86400;
-    enableSshSupport = true;
-    extraConfig = "allow-preset-passphrase";
-  };
+  # services.gpg-agent = {
+  #   enable = true;
+  #   pinentryFlavor = "gnome3";
+  #   maxCacheTtl = 86400;
+  #   enableSshSupport = true;
+  #   extraConfig = "allow-preset-passphrase";
+  # };
 
   services.polybar = {
     enable = false;
@@ -197,10 +125,10 @@ in
 
   services.unclutter.enable = true;
 
-  programs.gpg = {
-    enable = true;
-    homedir = "${config.xdg.dataHome}/gnupg";
-  };
+  # programs.gpg = {
+  #   enable = true;
+  #   homedir = "${config.xdg.dataHome}/gnupg";
+  # };
 
   programs.jq.enable = true;
 
@@ -232,14 +160,14 @@ in
     };
   };
 
-  programs.rofi = {
-    enable = true;
-    package = with pkgs; (rofi.override {plugins=[rofi-emoji rofi-calc];});
-    theme = "${config.xdg.configHome}/rofi/nord.rasi";
-    extraConfig = { modi = "window,drun,run,ssh"; };
-    pass.enable = true;
-    pass.stores = [ "${config.xdg.dataHome}/password-store" ];
-  };
+  /* programs.rofi = { */
+  /*   enable = true; */
+  /*   package = with pkgs; (rofi.override {plugins=[rofi-emoji rofi-calc];}); */
+  /*   theme = "${config.xdg.configHome}/rofi/nord.rasi"; */
+  /*   extraConfig = { modi = "window,drun,run,ssh"; }; */
+  /*   pass.enable = true; */
+  /*   pass.stores = [ "${config.xdg.dataHome}/password-store" ]; */
+  /* }; */
 
   programs.ssh.enable = true;
 
@@ -253,9 +181,6 @@ in
     platformTheme = "gtk";
   };
 
-  xsession.enable = true;
-  xsession.initExtra = "${config.xdg.configHome}/x11/xprofile";
-
   # xresources.extraConfig = builtins.readFile ( ~/.config/x11/xresources );
 
   nixpkgs.overlays = [
@@ -264,7 +189,7 @@ in
   ];
 
   # Packages
-  home.packages = defaultPackages ++ dictPackages ++ gitPackages ++ haskellPackages ++ nodePackages ++ obsPlugins ++ pythonPackages ++ luaPackages ++ rustPackages;
+  home.packages = defaultPackages ++ gitPackages ++ haskellPackages ++ nodePackages ++ pythonPackages ++ luaPackages;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

@@ -1,0 +1,85 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/insertdead/.config/nixpkgs/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+0. Definitions.	LICENSE.md	/^#### 0. Definitions.$/;"	t	subsection:TERMS AND CONDITIONS
+1. Source Code.	LICENSE.md	/^#### 1. Source Code.$/;"	t	subsection:TERMS AND CONDITIONS
+10. Automatic Licensing of Downstream Recipients.	LICENSE.md	/^#### 10. Automatic Licensing of Downstream Recipients.$/;"	t	subsection:TERMS AND CONDITIONS
+11. Patents.	LICENSE.md	/^#### 11. Patents.$/;"	t	subsection:TERMS AND CONDITIONS
+12. No Surrender of Others' Freedom.	LICENSE.md	/^#### 12. No Surrender of Others' Freedom.$/;"	t	subsection:TERMS AND CONDITIONS
+13. Use with the GNU Affero General Public License.	LICENSE.md	/^#### 13. Use with the GNU Affero General Public License.$/;"	t	subsection:TERMS AND CONDITIONS
+14. Revised Versions of this License.	LICENSE.md	/^#### 14. Revised Versions of this License.$/;"	t	subsection:TERMS AND CONDITIONS
+15. Disclaimer of Warranty.	LICENSE.md	/^#### 15. Disclaimer of Warranty.$/;"	t	subsection:TERMS AND CONDITIONS
+16. Limitation of Liability.	LICENSE.md	/^#### 16. Limitation of Liability.$/;"	t	subsection:TERMS AND CONDITIONS
+17. Interpretation of Sections 15 and 16.	LICENSE.md	/^#### 17. Interpretation of Sections 15 and 16.$/;"	t	subsection:TERMS AND CONDITIONS
+2. Basic Permissions.	LICENSE.md	/^#### 2. Basic Permissions.$/;"	t	subsection:TERMS AND CONDITIONS
+3. Protecting Users' Legal Rights From Anti-Circumvention Law.	LICENSE.md	/^#### 3. Protecting Users' Legal Rights From Anti-Circumvention Law.$/;"	t	subsection:TERMS AND CONDITIONS
+4. Conveying Verbatim Copies.	LICENSE.md	/^#### 4. Conveying Verbatim Copies.$/;"	t	subsection:TERMS AND CONDITIONS
+5. Conveying Modified Source Versions.	LICENSE.md	/^#### 5. Conveying Modified Source Versions.$/;"	t	subsection:TERMS AND CONDITIONS
+6. Conveying Non-Source Forms.	LICENSE.md	/^#### 6. Conveying Non-Source Forms.$/;"	t	subsection:TERMS AND CONDITIONS
+7. Additional Terms.	LICENSE.md	/^#### 7. Additional Terms.$/;"	t	subsection:TERMS AND CONDITIONS
+8. Termination.	LICENSE.md	/^#### 8. Termination.$/;"	t	subsection:TERMS AND CONDITIONS
+9. Acceptance Not Required for Having Copies.	LICENSE.md	/^#### 9. Acceptance Not Required for Having Copies.$/;"	t	subsection:TERMS AND CONDITIONS
+GNU GENERAL PUBLIC LICENSE	LICENSE.md	/^### GNU GENERAL PUBLIC LICENSE$/;"	S
+How to Apply These Terms to Your New Programs	LICENSE.md	/^### How to Apply These Terms to Your New Programs$/;"	S
+M.base	modules/nvim/lua/config/mappings.lua	/^M.base = function()$/;"	f
+M.map	modules/nvim/lua/config/utils.lua	/^M.map = function(mode, keys, cmd, opt)$/;"	f
+M.nvimtree	modules/nvim/lua/config/mappings.lua	/^M.nvimtree = function()$/;"	f
+M.saferequire	modules/nvim/lua/config/utils.lua	/^M.saferequire = function(module)$/;"	f
+M.telescope	modules/nvim/lua/config/mappings.lua	/^M.telescope = function()$/;"	f
+Nixfiles	README.md	/^# Nixfiles$/;"	c
+Preamble	LICENSE.md	/^### Preamble$/;"	S
+Structure	README.md	/^## Structure$/;"	s	chapter:Nixfiles
+TERMS AND CONDITIONS	LICENSE.md	/^### TERMS AND CONDITIONS$/;"	S
+["<S-Tab>"]	modules/nvim/lua/plugins/completion.lua	/^    ["<S-Tab>"] = cmp.mapping(function(fallback)$/;"	f
+["<Tab>"]	modules/nvim/lua/plugins/completion.lua	/^      ["<Tab>"] = cmp.mapping(function(fallback)$/;"	f
+buf_set_keymap	modules/nvim/lua/config/lsp.lua	/^  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end$/;"	f
+buf_set_option	modules/nvim/lua/config/lsp.lua	/^  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end$/;"	f
+clickable	modules/xmonad/xmonad/xmonad.hs	/^clickable ws = "<action=xdotool key super+"++show i++">"++ws++"<\/action>"$/;"	f
+expand	modules/nvim/lua/plugins/completion.lua	/^    expand = function(args)$/;"	f
+floats	modules/xmonad/xmonad/xmonad.hs	/^floats   = renamed [Replace "floats"]$/;"	f
+grid	modules/xmonad/xmonad/xmonad.hs	/^grid     = renamed [Replace "grid"]$/;"	f
+has_words_before	modules/nvim/lua/plugins/completion.lua	/^local has_words_before = function()$/;"	f
+main	modules/xmonad/xmonad/xmonad.hs	/^main = do$/;"	f
+main	modules/xmonad/xmonad/xmonadctl.hs	/^main = parse True "XMONAD_COMMAND" =<< getArgs$/;"	f
+map_wrapper	modules/nvim/lua/config/utils.lua	/^  local function map_wrapper(mode, lhs, rhs, options)$/;"	f
+monocle	modules/xmonad/xmonad/xmonad.hs	/^monocle  = renamed [Replace "monocle"]$/;"	f
+myAltBrowser	modules/xmonad/xmonad/xmonad.hs	/^myAltBrowser = "firefox -P noPrivacy"$/;"	f
+myBorderWidth	modules/xmonad/xmonad/xmonad.hs	/^myBorderWidth = 2           -- Sets border width for windows$/;"	f
+myBrowser	modules/xmonad/xmonad/xmonad.hs	/^myBrowser = "firefox" -- Sets qutebrowser as primary browser$/;"	f
+myEditor	modules/xmonad/xmonad/xmonad.hs	/^myEditor = "emacsclient -c -a 'emacs' "  -- Sets emacs as editor$/;"	f
+myEmacs	modules/xmonad/xmonad/xmonad.hs	/^myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type$/;"	f
+myFocusColor	modules/xmonad/xmonad/xmonad.hs	/^myFocusColor  = "#e5e9f0"   -- Border color of focused windows$/;"	f
+myFont	modules/xmonad/xmonad/xmonad.hs	/^myFont = "xft:Iosevka Nerd Font Mono:regular:size=12:antialias=true:hinting=true"$/;"	f
+myI2PBrowser	modules/xmonad/xmonad/xmonad.hs	/^myI2PBrowser = "doas -u ff firefox -profile ~ff\/.mozilla\/firefox\/6guurduo.I2P"$/;"	f
+myKeys	modules/xmonad/xmonad/xmonad.hs	/^myKeys =$/;"	f
+myLayoutHook	modules/xmonad/xmonad/xmonad.hs	/^myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats$/;"	f
+myManageHook	modules/xmonad/xmonad/xmonad.hs	/^myManageHook = composeAll$/;"	f
+myModMask	modules/xmonad/xmonad/xmonad.hs	/^myModMask = mod4Mask        -- Sets modkey to super\/windows key$/;"	f
+myNormColor	modules/xmonad/xmonad/xmonad.hs	/^myNormColor   = "#2e3440"   -- Border color of normal windows$/;"	f
+myScratchPads	modules/xmonad/xmonad/xmonad.hs	/^myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm$/;"	f
+myShowWNameTheme	modules/xmonad/xmonad/xmonad.hs	/^myShowWNameTheme = def$/;"	f
+mySpacing	modules/xmonad/xmonad/xmonad.hs	/^mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True$/;"	f
+mySpacing'	modules/xmonad/xmonad/xmonad.hs	/^mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True$/;"	f
+myStartupHook	modules/xmonad/xmonad/xmonad.hs	/^myStartupHook = do$/;"	f
+myTerminal	modules/xmonad/xmonad/xmonad.hs	/^myTerminal = "st"    -- Sets default terminal$/;"	f
+myWorkspaceIndices	modules/xmonad/xmonad/xmonad.hs	/^myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \\x y -> (x,y)$/;"	f
+myWorkspaces	modules/xmonad/xmonad/xmonad.hs	/^myWorkspaces = [" dev ", " www ", " sys ", " doc ", " games ", " chat ", " mus ", " vid ", " gfx/;"	f
+on_attach	modules/nvim/lua/config/lsp.lua	/^local on_attach = function(client, bufnr)$/;"	f
+parse	modules/xmonad/xmonad/xmonadctl.hs	/^parse input addr args = case args of$/;"	f
+repl	modules/xmonad/xmonad/xmonadctl.hs	/^repl addr = do e <- isEOF$/;"	f
+sendAll	modules/xmonad/xmonad/xmonadctl.hs	/^sendAll addr ss = foldr (\\a b -> sendCommand addr a >> b) (return ()) ss$/;"	f
+sendCommand	modules/xmonad/xmonad/xmonadctl.hs	/^sendCommand addr s = do$/;"	f
+showHelp	modules/xmonad/xmonad/xmonadctl.hs	/^showHelp = do pn <- getProgName$/;"	f
+spirals	modules/xmonad/xmonad/xmonad.hs	/^spirals  = renamed [Replace "spirals"]$/;"	f
+tall	modules/xmonad/xmonad/xmonad.hs	/^tall     = renamed [Replace "tall"]$/;"	f
+threeCol	modules/xmonad/xmonad/xmonad.hs	/^threeCol = renamed [Replace "threeCol"]$/;"	f
+threeRow	modules/xmonad/xmonad/xmonad.hs	/^threeRow = renamed [Replace "threeRow"]$/;"	f
+windowCount	modules/xmonad/xmonad/xmonad.hs	/^windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . w/;"	f

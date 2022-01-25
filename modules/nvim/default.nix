@@ -48,20 +48,22 @@ in {
     tree-sitter                               # to compile grammars in nvim-treesitter
     ccls                                      # C/C++ server
     sumneko-lua-language-server               # Lua server
-    rust-analyzer                             # Rust server
     bear                                      # Generate compilation database for clangd
     texlab                                    # LaTeX server
     universal-ctags                           # continuation of ctags
     nodePackages.vscode-langservers-extracted # JSON, HTML, and CSS servers
-    cargo
-    rustc
-    rustfmt
+    github-cli
   ];
 
   xdg = {
     enable = true;
     
     configFile = {
+
+      nvim_init = {
+        target = "nvim/init.lua";
+        source = ./lua/init.lua;
+      };
 
       nvim_lua_config = {
         target = "nvim/lua/config";
@@ -90,7 +92,7 @@ in {
   };
 
   programs.neovim = {
-    enable = true;
+    enable = false;
     package = pkgs.neovim-nightly;
     viAlias = true;
     vimAlias = true;
