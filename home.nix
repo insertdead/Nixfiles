@@ -30,19 +30,18 @@ let
   ];
 
   pythonPackages = with pkgs.python39Packages; [
-    black          # python formatting tool
-    ipython        # python shell prompt
-    isort          # sort python imports
-    nose           # python testing utility
-    pip            # python package manager
-    pyflakes       # error checker
-    pytest         # python testing utility
-    (python-lsp-server.override {
-      withPycodestyle = true;
-      withPydocstyle = true;
-      withRope = true;
-      # withMypy = true;
-    })
+    /* black          # python formatting tool */
+    /* ipython        # python shell prompt */
+    /* isort          # sort python imports */
+    /* nose           # python testing utility */
+    /* pip            # python package manager */
+    /* pyflakes       # error checker */
+    /* (python-lsp-server.override { */
+    /*   withPycodestyle = true; */
+    /*   withPydocstyle = true; */
+    /*   withRope = true; */
+    /*   # withMypy = true; */
+    /* }) */
     # python-lsp-black
     # pylsp-mypy
   ];
@@ -68,7 +67,7 @@ in
     ./modules/starship.nix
     # ./modules/emacs.nix
     # ./modules/dunst.nix
-    ./modules/mpv.nix
+    /* ./modules/mpv.nix */
     # ./modules/vscode.nix
     ./modules/direnv.nix
   ];

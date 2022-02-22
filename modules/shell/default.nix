@@ -19,10 +19,10 @@ let
     tree = "ls --tree";
     weather = "curl -s https://wttr.in; echo";
     yt = "youtube-dl";
-    pacupdate = "sudo pacman -Syu && echo REMEMBER TO REINSTALL PIPEWIRE-JACK ONCE CONFLICTS ARE SOLVED";
-    aurupdate = "paru -Syua && echo REMEMBER TO REINSTALL PIPEWIRE-JACK ONCE CONFLICTS ARE SOLVED";
-    systemupdate = "paru -Syu && echo REMEMBER TO REINSTALL PIPEWIRE-JACK ONCE CONFLICTS ARE SOLVED";
-    paru = "echo REMEMBER TO REINSTALL PIPEWIRE-JACK ONCE CONFLICTS ARE SOLVED && paru";
+    pacupdate = "sudo pacman -Syu";
+    aurupdate = "paru -Syua";
+    systemupdate = "paru -Syu";
+    paru = "paru";
   };
 
   shellVariables = {

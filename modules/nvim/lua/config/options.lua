@@ -36,12 +36,24 @@ opt.hlsearch = true
 opt.history = 5000
 
 -- Theme
--- cmd("set termguicolors")
+cmd("set termguicolors")
 require("nord").set()
 
 -- Misc
 opt.updatetime = 250
 opt.undofile = true
+
+-- GUI (Neovide)
+--  Window options
+g.neovide_refresh_rate = 140
+g.neovide_transparency = 0.95
+g.neovide_remember_window_size = true
+-- Animations
+g.neovide_cursor_trail_length = 0.05
+g.neovide_cursor_animation_length = 0.10
+-- Non-specific GUI config
+opt.guifont = "Iosevka Nerd Font,Noto Color Emoji:h10"
+
 
 -- Plugins
 safereq("plugins")

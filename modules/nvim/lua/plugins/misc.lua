@@ -1,5 +1,9 @@
 require'nvim-autopairs'.setup {}
-require'gitsigns'.setup()
+require("indent_blankline").setup {
+    show_current_context = true,
+    show_current_context_start = true,
+}
+require'gitsigns'.setup{}
 require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
@@ -46,3 +50,6 @@ require'nvim-tree'.setup {
     }
   }
 }
+require("neogit").setup {use_magit_keybindings = true}
+require("hop").setup {}
+require("todo-comments").setup {}
